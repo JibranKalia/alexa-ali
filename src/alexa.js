@@ -5,7 +5,7 @@ let constants = require("./constants");
 let stateHandlers = require("./stateHandlers");
 let audioEventHandlers = require("./audioEventHandlers");
 
-const logger = require("./utils");
+// const { logger } = require("./utils");
 
 const express = require("express");
 const router = express.Router();
@@ -15,11 +15,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  logger.debug(req.body);
-  mainAlexaHandler(req, req.body, (out) => res.send(out));
+  mainAlexaHandler(req.body, req.body.context, (err, response) => res.send(response));
 });
 
 const mainAlexaHandler = (event, context, callback) => {
+  console.log("Inside Main Alexa Handler");
   let alexa = Alexa.handler(event, context);
   alexa.appId = constants.appId;
   alexa.dynamoDBTableName = constants.dynamoDBTableName;
@@ -33,7 +33,7 @@ const mainAlexaHandler = (event, context, callback) => {
 
   if (constants.debug) {
     console.log("\n" + "******************* REQUEST **********************");
-    console.log("\n" + event, null, 2);
+    console.log(event);
 
     let origCallback = callback;
     callback = function(error, response) {
