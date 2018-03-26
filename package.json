@@ -1,0 +1,24 @@
+{
+  "name": "alexaMorning",
+  "version": "1.0.0",
+  "description": "Morning and Evening Prayers on Alexa",
+  "main": "index.js",
+  "author": "Jibran Kalia",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "dependencies": {
+    "alexa-sdk": "^1.0.25",
+    "alexa-verifier-middleware": "^1.0.1",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.2",
+    "winston": "^3.0.0-rc3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  }
+}
